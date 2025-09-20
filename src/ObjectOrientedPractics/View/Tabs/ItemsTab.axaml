@@ -1,0 +1,68 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:model="using:ObjectOrientedPractics.Model"
+             x:Class="ObjectOrientedPractics.View.Tabs.ItemsTab"
+             Padding="16">
+  <Grid ColumnDefinitions="2*,3*" ColumnSpacing="16"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+    <Grid Grid.Column="0" RowDefinitions="Auto,*,Auto" RowSpacing="8">
+      <TextBlock Grid.Row="0" Text="Items" FontSize="18"/>
+      
+      <ListBox Grid.Row="1" x:Name="ItemsList" x:FieldModifier="public"
+               HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListBox.ItemTemplate>
+          <DataTemplate x:DataType="model:Item">
+            <TextBlock Text="{Binding Name}" />
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+
+      <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
+        <Button x:Name="AddBtn"    x:FieldModifier="public" Content="Add"/>
+        <Button x:Name="RemoveBtn" x:FieldModifier="public" Content="Remove"/>
+      </StackPanel>
+    </Grid>
+
+    <ScrollViewer Grid.Column="1"
+                  VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+      <Grid RowDefinitions="Auto,Auto,Auto"
+            RowSpacing="10"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        
+        <TextBlock Grid.Row="0" Text="Editor" FontSize="18" Margin="0,0,0,8"/>
+        
+        <Grid Grid.Row="1"
+              ColumnDefinitions="140,*"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              ColumnSpacing="8" RowSpacing="8"
+              HorizontalAlignment="Stretch">
+          
+          <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Id:"/>
+          <TextBox   Grid.Row="0" Grid.Column="1" x:Name="IdBox" x:FieldModifier="public"
+                     IsReadOnly="True" MinWidth="160" HorizontalAlignment="Left"/>
+
+          <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Name:"/>
+          <TextBox   Grid.Row="1" Grid.Column="1" x:Name="NameBox" x:FieldModifier="public"
+                     HorizontalAlignment="Stretch"/>
+
+          <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Text="Info:"/>
+          <TextBox   Grid.Row="2" Grid.Column="1" x:Name="InfoBox" x:FieldModifier="public"
+                     AcceptsReturn="True" MinHeight="100" HorizontalAlignment="Stretch"/>
+
+          <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Text="Cost:"/>
+          <TextBox   Grid.Row="3" Grid.Column="1" x:Name="CostBox" x:FieldModifier="public"
+                     MinWidth="120" HorizontalAlignment="Left"/>
+
+          <TextBlock Grid.Row="4" Grid.ColumnSpan="2" x:Name="ErrorText" x:FieldModifier="public"
+                     Foreground="Red" />
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+          <Button x:Name="SaveBtn"  x:FieldModifier="public" Content="Save"/>
+        </StackPanel>
+      </Grid>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

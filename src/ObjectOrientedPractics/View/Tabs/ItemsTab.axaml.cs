@@ -15,6 +15,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Коллекция товаров.
         /// </summary>
+
         private readonly ObservableCollection<Item> _items = new();
 
         /// <summary>
@@ -39,6 +40,7 @@ namespace ObjectOrientedPractics.View.Tabs
             RemoveBtn.Click += OnRemove;
             SaveBtn.Click += OnSave;
         }
+        
 
         /// <summary>
         /// Загрузка данных товара в форму.
@@ -46,10 +48,11 @@ namespace ObjectOrientedPractics.View.Tabs
         private void LoadToForm(Item? it)
         {
             ErrorText.Text = "";
-            IdBox.Text   = it?.Id.ToString() ?? "";
+            IdBox.Text = it?.Id.ToString() ?? "";
             NameBox.Text = it?.Name ?? "";
             InfoBox.Text = it?.Info ?? "";
             CostBox.Text = it?.Cost.ToString() ?? "";
+            CategoryBox.SelectedIndex = it is null ? -1 : (int)it.Category;
         }
 
         /// <summary>
@@ -57,7 +60,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void OnAdd(object? sender, RoutedEventArgs e)
         {
-            var it = new Item("New item", "", 0m);
+            var it = new Item("New item", "", 0m,Category.Other);
             _items.Add(it);
             ItemsList.SelectedItem = it;
         }
@@ -84,6 +87,7 @@ namespace ObjectOrientedPractics.View.Tabs
 
                 _selected.Name = NameBox.Text ?? "";
                 _selected.Info = InfoBox.Text ?? "";
+                _selected.Category = (Category)CategoryBox.SelectedIndex;
 
                 if (!decimal.TryParse(CostBox.Text, out var cost))
                     throw new ArgumentException("Cost: введите число");

@@ -24,9 +24,6 @@ build_property.EnableCodeStyleSeverity =
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
-[/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Controls/AddressControl.axaml]
-build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
-
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

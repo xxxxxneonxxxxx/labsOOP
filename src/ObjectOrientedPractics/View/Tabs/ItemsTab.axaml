@@ -54,6 +54,19 @@
           <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Text="Cost:"/>
           <TextBox   Grid.Row="3" Grid.Column="1" x:Name="CostBox" x:FieldModifier="public"
                      MinWidth="120" HorizontalAlignment="Left"/>
+                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Category:"/>
+          <ComboBox Grid.Row="4" Grid.Column="1" x:Name="CategoryBox" x:FieldModifier="public"
+                    SelectedIndex="0"
+                    HorizontalAlignment="Stretch">
+              <ComboBoxItem Content="Electronics"/>
+              <ComboBoxItem Content="Clothes"/>
+              <ComboBoxItem Content="Food"/>
+              <ComboBoxItem Content="Books"/>
+              <ComboBoxItem Content="Sports"/>
+              <ComboBoxItem Content="Beauty"/>
+              <ComboBoxItem Content="Toys"/>
+
+          </ComboBox>
 
           <TextBlock Grid.Row="4" Grid.ColumnSpan="2" x:Name="ErrorText" x:FieldModifier="public"
                      Foreground="Red" />

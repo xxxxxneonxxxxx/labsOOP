@@ -54,9 +54,9 @@
           <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Text="Cost:"/>
           <TextBox   Grid.Row="3" Grid.Column="1" x:Name="CostBox" x:FieldModifier="public"
                      MinWidth="120" HorizontalAlignment="Left"/>
-                     <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Category:"/>
+          <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Text="Category:"/>
           <ComboBox Grid.Row="4" Grid.Column="1" x:Name="CategoryBox" x:FieldModifier="public"
-                    SelectedIndex="0"
+                    SelectedIndegitx="0"
                     HorizontalAlignment="Stretch">
               <ComboBoxItem Content="Electronics"/>
               <ComboBoxItem Content="Clothes"/>

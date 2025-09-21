@@ -1,0 +1,29 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Rider / VS
+.vs/
+.idea/
+
+# Avalonia / .NET
+*.user
+*.suo
+*.userprefs
+*.rsuser
+
+# VS Code
+.vscode/
+
+# Cache
+*.cache
+*.tmp
+*.log
+
+# Packages
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/

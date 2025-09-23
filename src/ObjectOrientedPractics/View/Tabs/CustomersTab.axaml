@@ -1,13 +1,21 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:model="using:ObjectOrientedPractics.Model"
-             x:Class="ObjectOrientedPractics.View.Tabs.CustomersTab"
-             Padding="16">
+<UserControl
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:model="using:ObjectOrientedPractics.Model"
+  x:Class="ObjectOrientedPractics.View.Tabs.CustomersTab"
+  Padding="16">
+
+  <!-- Общая сетка: 2 колонки (левая для списка, правая для редактора) -->
   <Grid ColumnDefinitions="2*,3*" ColumnSpacing="16"
-        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch">
+
+    <!-- Левая колонка со списком покупателей -->
     <Grid Grid.Column="0" RowDefinitions="Auto,*,Auto" RowSpacing="8">
+      <!-- Заголовок списка -->
       <TextBlock Grid.Row="0" Text="Customers" FontSize="18" />
+
+      <!-- Список покупателей -->
       <ListBox Grid.Row="1"
                x:Name="CustomersList"
                x:FieldModifier="public"
@@ -20,44 +28,104 @@
           </DataTemplate>
         </ListBox.ItemTemplate>
       </ListBox>
+
+      <!-- Кнопки добавления/удаления -->
       <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8">
         <Button x:Name="AddBtn"    x:FieldModifier="public" Content="Add"/>
         <Button x:Name="RemoveBtn" x:FieldModifier="public" Content="Remove"/>
       </StackPanel>
     </Grid>
 
+    <!-- Правая колонка: редактор выбранного покупателя -->
     <ScrollViewer Grid.Column="1"
                   VerticalScrollBarVisibility="Auto"
                   HorizontalScrollBarVisibility="Disabled">
-      <Grid RowDefinitions="Auto,Auto,Auto"
-            RowSpacing="10"
-            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <TextBlock Grid.Row="0" Text="Editor" FontSize="18" Margin="0,0,0,8"/>
 
+      <!-- Основная сетка внутри редактора -->
+      <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch">
+
+        <!-- Заголовок блока редактирования -->
+        <TextBlock Grid.Row="0"
+                   Text="Selected Customer"
+                   FontWeight="Bold"
+                   FontSize="18"
+                   Margin="0,0,0,8"/>
+
+        <!-- Форма редактирования покупателя -->
         <Grid Grid.Row="1"
               ColumnDefinitions="140,*"
-              RowDefinitions="Auto,Auto,Auto,Auto"
-              ColumnSpacing="8" RowSpacing="8"
+              RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+              ColumnSpacing="8"
+              RowSpacing="8"
               HorizontalAlignment="Stretch">
-          <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Text="Id:"/>
-          
+
+          <!-- Id покупателя -->
+          <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" VerticalAlignment="Center"/>
           <TextBox   Grid.Row="0" Grid.Column="1" x:Name="IdBox" x:FieldModifier="public"
                      IsReadOnly="True" MinWidth="160" HorizontalAlignment="Left"/>
 
-          <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Text="Fullname:"/>
+          <!-- Полное имя -->
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Fullname:" VerticalAlignment="Center"/>
           <TextBox   Grid.Row="1" Grid.Column="1" x:Name="FullnameBox" x:FieldModifier="public"
                      HorizontalAlignment="Stretch"/>
 
-          <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Text="Address:"/>
-          <TextBox   Grid.Row="2" Grid.Column="1" x:Name="AddressBox" x:FieldModifier="public"
-                     AcceptsReturn="True" MinHeight="100" HorizontalAlignment="Stretch"/>
+          <!-- Заголовок для адреса -->
+          <TextBlock Grid.Row="2" Text="Delivery Address"
+                     FontWeight="Bold" FontSize="18" Margin="0,0,0,8"/>
 
-          <TextBlock Grid.Row="3" Grid.ColumnSpan="2" x:Name="ErrorText" x:FieldModifier="public"
-                     Foreground="Red" />
+          <!-- Блок ввода адреса -->
+          <Grid Grid.Row="3" Grid.ColumnSpan="2"
+                ColumnDefinitions="140,*,140,*"
+                RowDefinitions="Auto,Auto,Auto,Auto"
+                ColumnSpacing="12"
+                RowSpacing="12"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+
+            <!-- Почтовый индекс -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Post Index:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="0" Grid.Column="1" x:Name="PostIndexBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+
+            <!-- Страна -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Country:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="1" Grid.Column="1" x:Name="CountryBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+
+            <!-- Город -->
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="City:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="1" Grid.Column="3" x:Name="CityBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+
+            <!-- Улица -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Street:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                       x:Name="StreetBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+
+            <!-- Дом -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Building:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="3" Grid.Column="1" x:Name="BuildingBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+
+            <!-- Квартира -->
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Apartment:" VerticalAlignment="Center"/>
+            <TextBox   Grid.Row="3" Grid.Column="3" x:Name="ApartmentBox" x:FieldModifier="public"
+                       HorizontalAlignment="Stretch"/>
+          </Grid>
+
+          <!-- Сообщения об ошибках -->
+          <TextBlock Grid.Row="4" Grid.ColumnSpan="2"
+                     x:Name="ErrorText"
+                     x:FieldModifier="public"
+                     Foreground="Red"/>
         </Grid>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
-          <Button x:Name="SaveBtn"  x:FieldModifier="public" Content="Save"/>
+        <!-- Кнопка сохранения -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
+          <Button x:Name="SaveBtn" x:FieldModifier="public" Content="Save"/>
         </StackPanel>
       </Grid>
     </ScrollViewer>

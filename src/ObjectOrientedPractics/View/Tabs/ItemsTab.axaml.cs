@@ -29,6 +29,7 @@ namespace ObjectOrientedPractics.View.Tabs
         public ItemsTab()
         {
             InitializeComponent();
+            CategoryBox.SelectionChanged += OnCategoryChanged;
             ItemsList.ItemsSource = _items;
             ItemsList.SelectionChanged += (_, __) =>
             {
@@ -63,6 +64,13 @@ namespace ObjectOrientedPractics.View.Tabs
             var it = new Item("New item", "", 0m,Category.Other);
             _items.Add(it);
             ItemsList.SelectedItem = it;
+        }
+        private void OnCategoryChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            if (_selected == null) return; // Если ничего не выбрано, выходим
+
+            // Присваиваем выбранную категорию текущему товару
+            _selected.Category = (Category)CategoryBox.SelectedIndex;
         }
 
         /// <summary>

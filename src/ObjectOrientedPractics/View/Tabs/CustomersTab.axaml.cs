@@ -44,10 +44,16 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void LoadToForm(Customer? c)
         {
-            ErrorText.Text   = "";
-            IdBox.Text       = c?.Id.ToString() ?? "";
+            ErrorText.Text = "";
+            IdBox.Text = c?.Id.ToString() ?? "";
             FullnameBox.Text = c?.Fullname ?? "";
-            AddressBox.Text  = c?.Address ?? "";
+            var a = c?.Address;
+            PostIndexBox.Text = a?.Index.ToString() ?? "";
+            CountryBox.Text = a?.Country ?? "";
+            CityBox.Text = a?.City ?? "";
+            StreetBox.Text = a?.Street ?? "";
+            BuildingBox.Text = a?.Building ?? "";
+            ApartmentBox.Text = a?.Apartment ?? "";
         }
 
         /// <summary>
@@ -55,7 +61,7 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void OnAdd(object? sender, RoutedEventArgs e)
         {
-            var c = new Customer("New Customer", "");
+            var c = new Customer("New Customer", new Address());
             _customers.Add(c);
             CustomersList.SelectedItem = c;
         }
@@ -80,7 +86,18 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 if (_selected is null) return;
                 _selected.Fullname = FullnameBox.Text ?? "";
-                _selected.Address  = AddressBox.Text  ?? "";
+                var address = _selected.Address ?? new Address();
+                if (!int.TryParse(PostIndexBox.Text, out var index))
+                {
+                    throw new ArgumentException("Индекс должен быть числом");
+                }
+                address.Index = index;
+                address.Country = CountryBox.Text ?? "";
+                address.City = CityBox.Text ?? "";
+                address.Street = StreetBox.Text ?? "";
+                address.Building = BuildingBox.Text ?? "";
+                address.Apartment = ApartmentBox.Text ?? "";
+                _selected.Address = address;
                 var idx = CustomersList.SelectedIndex;
                 CustomersList.ItemsSource = null;
                 CustomersList.ItemsSource = _customers;

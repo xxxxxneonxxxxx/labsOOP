@@ -20,12 +20,25 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки, до 500 символов.
         /// </summary>
-        private string _address = string.Empty;
+        private Address _address;
 
         /// <summary>
         /// Возвращает уникальный идентификатор покупателя.
         /// </summary>
         public int Id => _id;
+
+        /// <summary>
+        /// Создает экземпляр покупателя.
+        /// </summary>
+        /// <param name="fullname">Полное имя (<=200).</param>
+        /// <param name="address">Адрес (<=500).</param>
+        public Customer(string fullname, Address address)
+        {
+            _id = IdGenerator.GetNextId();
+            Fullname = fullname;
+            Address = address;
+            
+        }
 
         /// <summary>
         /// Полное имя покупателя (до 200 символов).
@@ -43,26 +56,12 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки (до 500 символов).
         /// </summary>
-        public string Address
+        public Address Address
         {
-            get => _address;
-            set
-            {
-                ValueValidator.AssertStringOnLength(value ?? string.Empty, 500, nameof(Address));
-                _address = value ?? string.Empty;
-            }
+            get { return _address; }
+            set { _address = value; }
         }
 
-        /// <summary>
-        /// Создает экземпляр покупателя.
-        /// </summary>
-        /// <param name="fullname">Полное имя (<=200).</param>
-        /// <param name="address">Адрес (<=500).</param>
-        public Customer(string fullname, string address)
-        {
-            _id = IdGenerator.GetNextId();
-            Fullname = fullname;
-            Address  = address;
-        }
+        
     }
 }

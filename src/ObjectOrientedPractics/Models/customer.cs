@@ -20,7 +20,7 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Адрес доставки, до 500 символов.
         /// </summary>
-        private Address _address;
+        private Address _address = new Address();
 
         /// <summary>
         /// Возвращает уникальный идентификатор покупателя.
@@ -31,7 +31,7 @@ namespace ObjectOrientedPractics.Model
         /// Создает экземпляр покупателя.
         /// </summary>
         /// <param name="fullname">Полное имя (<=200).</param>
-        /// <param name="address">Адрес (<=500).</param>
+        /// <param name="address">Адрес доставки.</param>
         public Customer(string fullname, Address address)
         {
             _id = IdGenerator.GetNextId();

@@ -5,7 +5,6 @@
   x:Class="ObjectOrientedPractics.View.Tabs.ItemsTab"
   Padding="16">
 
-  <!-- Общая сетка: левая колонка со списком, правая колонка с редактором -->
   <Grid
     ColumnDefinitions="2*,3*"
     ColumnSpacing="16"

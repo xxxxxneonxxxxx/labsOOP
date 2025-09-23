@@ -14,27 +14,27 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Страна/регион.
         /// </summary>
-        private string _country;
+        private string _country = string.Empty;
 
         /// <summary>
         /// Город (населенный пункт).
         /// </summary>
-        private string _city;
+        private string _city = string.Empty;
 
         /// <summary>
         /// Улица.
         /// </summary>
-        private string _street;
+        private string _street = string.Empty;
 
         /// <summary>
         /// Номер дома.
         /// </summary>
-        private string _building;
+        private string _building = string.Empty;
 
         /// <summary>
         /// Номер квартиры/помещения.
         /// </summary>
-        private string _apartment;
+        private string _apartment = string.Empty;
 
         /// <summary>
         /// Создает экземпляр класса <see cref="Address"/> по умолчанию.
@@ -150,5 +150,6 @@ namespace ObjectOrientedPractics.Model
         {
             return $"{Index}, {Country}, {City}, {Street}, {Building}, {Apartment}";
         }
+        
     }
 }

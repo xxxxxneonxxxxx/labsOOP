@@ -65,11 +65,14 @@ namespace ObjectOrientedPractics.View.Tabs
             _items.Add(it);
             ItemsList.SelectedItem = it;
         }
+        /// <summary>
+        /// Событие изменения категории в ComboBox.
+        /// Обновляет категорию у выбранного товара.
+        /// </summary>
         private void OnCategoryChanged(object? sender, SelectionChangedEventArgs e)
         {
-            if (_selected == null) return; // Если ничего не выбрано, выходим
+            if (_selected == null) return;
 
-            // Присваиваем выбранную категорию текущему товару
             _selected.Category = (Category)CategoryBox.SelectedIndex;
         }
 

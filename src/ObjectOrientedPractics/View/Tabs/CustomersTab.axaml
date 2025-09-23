@@ -5,7 +5,6 @@
   x:Class="ObjectOrientedPractics.View.Tabs.CustomersTab"
   Padding="16">
 
-  <!-- Общая сетка: 2 колонки (левая для списка, правая для редактора) -->
   <Grid ColumnDefinitions="2*,3*" ColumnSpacing="16"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch">

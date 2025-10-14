@@ -2,7 +2,6 @@ using System;
 using System.Collections.ObjectModel;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using Avalonia.Markup.Xaml;
 using ObjectOrientedPractics.Model;
 
 namespace ObjectOrientedPractics.View.Tabs
@@ -15,44 +14,54 @@ namespace ObjectOrientedPractics.View.Tabs
         /// <summary>
         /// Коллекция товаров.
         /// </summary>
-
-        private readonly ObservableCollection<Item> _items = new();
+        private ObservableCollection<Item>? _items;
 
         /// <summary>
-        /// Выбранный товар.
+        /// Текущий выбранный товар.
         /// </summary>
         private Item? _selected;
 
-        /// <summary>
-        /// Инициализация вкладки ItemsTab.
-        /// </summary>
         public ItemsTab()
         {
             InitializeComponent();
+
             CategoryBox.SelectionChanged += OnCategoryChanged;
-            ItemsList.ItemsSource = _items;
-            ItemsList.SelectionChanged += (_, __) =>
+            ItemsList.SelectionChanged   += (_, __) =>
             {
                 _selected = ItemsList.SelectedItem as Item;
                 LoadToForm(_selected);
             };
-
-            AddBtn.Click += OnAdd;
+            AddBtn.Click    += OnAdd;
             RemoveBtn.Click += OnRemove;
-            SaveBtn.Click += OnSave;
+            SaveBtn.Click   += OnSave;
         }
-        
 
         /// <summary>
-        /// Загрузка данных товара в форму.
+        /// Коллекция товаров вкладки.
+        /// </summary>
+        public ObservableCollection<Item> Items
+        {
+            get => _items ?? throw new InvalidOperationException(
+                "Коллекция товаров не установлена. " +
+                "Назначьте ItemsTab.Items = store.Items перед использованием.");
+            set
+            {
+                _items = value ?? throw new ArgumentNullException(nameof(value));
+                ItemsList.ItemsSource = _items;
+            }
+        }
+
+
+        /// <summary>
+        /// Загрузка данных товара в поля формы.
         /// </summary>
         private void LoadToForm(Item? it)
         {
-            ErrorText.Text = "";
-            IdBox.Text = it?.Id.ToString() ?? "";
-            NameBox.Text = it?.Name ?? "";
-            InfoBox.Text = it?.Info ?? "";
-            CostBox.Text = it?.Cost.ToString() ?? "";
+            ErrorText.Text     = "";
+            IdBox.Text         = it?.Id.ToString() ?? "";
+            NameBox.Text       = it?.Name ?? "";
+            InfoBox.Text       = it?.Info ?? "";
+            CostBox.Text       = it?.Cost.ToString() ?? "";
             CategoryBox.SelectedIndex = it is null ? -1 : (int)it.Category;
         }
 
@@ -61,18 +70,17 @@ namespace ObjectOrientedPractics.View.Tabs
         /// </summary>
         private void OnAdd(object? sender, RoutedEventArgs e)
         {
-            var it = new Item("New item", "", 0m,Category.Other);
+            var it = new Item("New item", "", 0m, Category.Other);
             _items.Add(it);
             ItemsList.SelectedItem = it;
         }
+
         /// <summary>
-        /// Событие изменения категории в ComboBox.
-        /// Обновляет категорию у выбранного товара.
+        /// Обработка изменения категории в ComboBox.
         /// </summary>
         private void OnCategoryChanged(object? sender, SelectionChangedEventArgs e)
         {
-            if (_selected == null) return;
-
+            if (_selected is null) return;
             _selected.Category = (Category)CategoryBox.SelectedIndex;
         }
 
@@ -88,7 +96,7 @@ namespace ObjectOrientedPractics.View.Tabs
         }
 
         /// <summary>
-        /// Сохранение данных выбранного товара.
+        /// Сохранение изменений выбранного товара.
         /// </summary>
         private void OnSave(object? sender, RoutedEventArgs e)
         {
@@ -96,8 +104,8 @@ namespace ObjectOrientedPractics.View.Tabs
             {
                 if (_selected is null) return;
 
-                _selected.Name = NameBox.Text ?? "";
-                _selected.Info = InfoBox.Text ?? "";
+                _selected.Name     = NameBox.Text ?? "";
+                _selected.Info     = InfoBox.Text ?? "";
                 _selected.Category = (Category)CategoryBox.SelectedIndex;
 
                 if (!decimal.TryParse(CostBox.Text, out var cost))
@@ -107,7 +115,6 @@ namespace ObjectOrientedPractics.View.Tabs
                     throw new ArgumentOutOfRangeException(nameof(cost), "Стоимость должна быть от 0 до 100000.");
 
                 _selected.Cost = cost;
-
                 var idx = ItemsList.SelectedIndex;
                 ItemsList.ItemsSource = null;
                 ItemsList.ItemsSource = _items;

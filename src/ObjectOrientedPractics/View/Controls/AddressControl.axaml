@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ObjectOrientedPractics.View.Controls.AddressControl">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="120,*" RowSpacing="6" ColumnSpacing="8">
+    <TextBlock Grid.Row="0" Grid.Column="0" Text="Index:"/>
+    <TextBox   Grid.Row="0" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="1" Grid.Column="0" Text="Country:"/>
+    <TextBox   Grid.Row="1" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="2" Grid.Column="0" Text="City:"/>
+    <TextBox   Grid.Row="2" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="3" Grid.Column="0" Text="Street:"/>
+    <TextBox   Grid.Row="3" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="4" Grid.Column="0" Text="Building:"/>
+    <TextBox   Grid.Row="4" Grid.Column="1"/>
+
+    <TextBlock Grid.Row="5" Grid.Column="0" Text="Apartment:"/>
+    <TextBox   Grid.Row="5" Grid.Column="1"/>
+  </Grid>
+</UserControl>

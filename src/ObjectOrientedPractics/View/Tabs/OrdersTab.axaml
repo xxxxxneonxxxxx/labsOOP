@@ -1,0 +1,184 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ObjectOrientedPractics.View.Tabs.OrdersTab"
+             Padding="8">
+
+  <Grid ColumnDefinitions="2*,3*" RowDefinitions="*">
+
+    <!-- ЛЕВАЯ ЧАСТЬ: таблица заказов -->
+    <DataGrid x:Name="OrdersDataGrid"
+              x:FieldModifier="public"
+              Grid.Row="0"
+              Grid.Column="0"
+              Margin="8"
+              MinWidth="250"
+              AutoGenerateColumns="False"
+              IsReadOnly="True"
+              HeadersVisibility="All"
+              GridLinesVisibility="All"
+              SelectionMode="Single" />
+
+    <!-- ПРАВАЯ ЧАСТЬ: детали заказа -->
+    <StackPanel Grid.Row="0" Grid.Column="1" Margin="16">
+
+      <!-- Заголовок блока -->
+      <TextBlock Text="Selected Order"
+                 FontWeight="Bold"
+                 Margin="0,0,0,8"/>
+
+      <!-- ID / Created / Status -->
+      <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
+        <TextBlock Text="ID:"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="OrderIdTextBlock"
+                   x:FieldModifier="public"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   IsReadOnly="True"
+                   Margin="0,0,0,4" />
+
+        <TextBlock Text="Created:"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="OrderCreatedTextBlock"
+                   x:FieldModifier="public"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   IsReadOnly="True"
+                   Margin="0,0,0,4" />
+
+        <!-- Статус -->
+        <StackPanel Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    Margin="0,4,0,0">
+          <TextBlock Text="Status:"
+                     VerticalAlignment="Center"
+                     Margin="0,0,8,0" />
+
+          <ComboBox x:Name="StatusComboBox"
+                    x:FieldModifier="public"
+                    Width="140"
+                    Margin="0,0,8,0" />
+        </StackPanel>
+      </Grid>
+
+      <!-- Адрес -->
+      <TextBlock Text="Delivery Address"
+                 FontWeight="Bold"
+                 Margin="0,16,0,8"/>
+
+      <Grid ColumnDefinitions="Auto,*,Auto,*"
+            RowDefinitions="Auto,Auto,Auto,Auto">
+
+        <!-- Post Index -->
+        <TextBlock Text="Post Index:"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="IndexTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Margin="0,0,0,4"
+                   IsReadOnly="True" />
+
+        <!-- Country / City -->
+        <TextBlock Text="Country:"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="CountryTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="0,0,8,4"
+                   IsReadOnly="True" />
+
+        <TextBlock Text="City:"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="CityTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="1"
+                   Grid.Column="3"
+                   Margin="0,0,0,4"
+                   IsReadOnly="True" />
+
+        <!-- Street -->
+        <TextBlock Text="Street:"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+
+        <TextBox   x:Name="StreetTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Margin="0,0,0,4"
+                   IsReadOnly="True" />
+
+        <!-- Building / Apartment -->
+        <TextBlock Text="Building:"
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="BuildingTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   Margin="0,0,8,4"
+                   IsReadOnly="True" />
+
+        <TextBlock Text="Apartment:"
+                   Grid.Row="3"
+                   Grid.Column="2"
+                   Margin="0,0,8,4"
+                   VerticalAlignment="Center" />
+        <TextBox   x:Name="ApartmentTextBox"
+                   x:FieldModifier="public"
+                   Grid.Row="3"
+                   Grid.Column="3"
+                   Margin="0,0,0,4"
+                   IsReadOnly="True" />
+      </Grid>
+
+      <!-- Order items -->
+      <TextBlock Text="Order Items"
+                 FontWeight="Bold"
+                 Margin="0,16,0,4"/>
+
+      <ListBox x:Name="OrderItemsListBox"
+               x:FieldModifier="public"
+               Height="160"
+               Margin="0,0,0,8" />
+
+      <!-- Amount -->
+      <StackPanel Orientation="Horizontal"
+                  HorizontalAlignment="Right"
+                  Margin="0,8,0,0">
+        <TextBlock Text="Amount:"
+                   Margin="0,0,4,0"
+                   VerticalAlignment="Center" />
+        <TextBlock x:Name="AmountTextBlock"
+                   x:FieldModifier="public"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   VerticalAlignment="Center" />
+      </StackPanel>
+
+    </StackPanel>
+  </Grid>
+</UserControl>

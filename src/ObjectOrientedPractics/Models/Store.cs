@@ -10,20 +10,19 @@ namespace ObjectOrientedPractics.Model
         /// <summary>
         /// Товары магазина.
         /// </summary>
-        public ObservableCollection<Item> Items { get; }
+        public ObservableCollection<Item> Items { get; } = new();
 
         /// <summary>
         /// Покупатели магазина.
         /// </summary>
-        public ObservableCollection<Customer> Customers { get; }
+        public ObservableCollection<Customer> Customers { get; } = new();
 
         /// <summary>
         /// Создаёт магазин с пустыми коллекциями.
         /// </summary>
         public Store()
         {
-            Items = new ObservableCollection<Item>();
-            Customers = new ObservableCollection<Customer>();
+            // Ничего не делаем: коллекции уже инициализированы выше
         }
     }
 }

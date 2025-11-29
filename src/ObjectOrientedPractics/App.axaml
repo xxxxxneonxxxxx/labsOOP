@@ -1,9 +1,13 @@
-<Application xmlns="https://github.com/avaloniaui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent"
-             x:Class="ObjectOrientedPractics.App">
-  <Application.Styles>
-    <fluent:FluentTheme />
-  </Application.Styles>
-  <Application.RequestedThemeVariant>Light</Application.RequestedThemeVariant>
+<Application
+    x:Class="ObjectOrientedPractics.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:fluent="clr-namespace:Avalonia.Themes.Fluent;assembly=Avalonia.Themes.Fluent"
+    RequestedThemeVariant="Light">
+
+    <Application.Styles>
+        <fluent:FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+    </Application.Styles>
+
 </Application>

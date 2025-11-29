@@ -26,6 +26,7 @@
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Vulkan.dll
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.dll
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Controls.ColorPicker.dll
+/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Controls.DataGrid.dll
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Desktop.dll
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Diagnostics.dll
 /Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/bin/Debug/net9.0/Avalonia.Fonts.Inter.dll

@@ -5,14 +5,17 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
   </PropertyGroup>
+
   <ItemGroup>
-    <!-- Ассеты приложения -->
-    <AvaloniaResource Include="Assets\**" />
+    <!-- Ассеты (XAML подхватываются SDK автоматически) -->
+    <AvaloniaResource Include="Assets/**" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.3.6" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="11.3.6" />
     <PackageReference Include="Avalonia.Desktop" Version="11.3.6" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.6" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.6" />

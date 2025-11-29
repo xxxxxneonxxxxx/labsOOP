@@ -1,132 +1,80 @@
 <UserControl
-  xmlns="https://github.com/avaloniaui"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:model="using:ObjectOrientedPractics.Model"
-  x:Class="ObjectOrientedPractics.View.Tabs.ItemsTab"
-  Padding="16">
+    x:Class="ObjectOrientedPractics.View.Tabs.ItemsTab"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
-  <Grid
-    ColumnDefinitions="2*,3*"
-    ColumnSpacing="16"
-    HorizontalAlignment="Stretch"
-    VerticalAlignment="Stretch">
+    <Grid ColumnDefinitions="2*,3*" RowDefinitions="*">
+        <!-- Левая часть: список товаров -->
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-    <!-- Левая колонка -->
-    <Grid
-      Grid.Column="0"
-      RowDefinitions="Auto,*,Auto"
-      RowSpacing="8">
+            <TextBlock Text="Items"
+                       FontWeight="Bold"
+                       Margin="0,0,0,5"/>
 
-      <!-- Заголовок списка -->
-      <TextBlock
-        Grid.Row="0"
-        Text="Items"
-        FontSize="18" />
-
-      <!-- Список товаров -->
-      <ListBox
-        Grid.Row="1"
-        x:Name="ItemsList"
-        x:FieldModifier="public"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch">
-        <ListBox.ItemTemplate>
-          <DataTemplate x:DataType="model:Item">
-            <TextBlock Text="{Binding Name}" />
-          </DataTemplate>
-        </ListBox.ItemTemplate>
-      </ListBox>
-
-      <!-- Кнопки добавления/удаления -->
-      <StackPanel
-        Grid.Row="2"
-        Orientation="Horizontal"
-        Spacing="8">
-        <Button
-          x:Name="AddBtn"
-          x:FieldModifier="public"
-          Content="Add" />
-        <Button
-          x:Name="RemoveBtn"
-          x:FieldModifier="public"
-          Content="Remove" />
-      </StackPanel>
-    </Grid>
-
-    <!-- Правая колонка -->
-    <ScrollViewer
-      Grid.Column="1"
-      VerticalScrollBarVisibility="Auto"
-      HorizontalScrollBarVisibility="Disabled">
-
-      <!-- Основная сетка редактора -->
-      <Grid
-        RowDefinitions="Auto,Auto,Auto"
-        RowSpacing="10"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch">
-
-        <!-- Заголовок редактора -->
-        <TextBlock
-          Grid.Row="0"
-          Text="Editor"
-          FontSize="18"
-          Margin="0,0,0,8" />
-
-        <!-- Форма редактирования товара -->
-        <Grid
-          Grid.Row="1"
-          ColumnDefinitions="140,*"
-          RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-          ColumnSpacing="8"
-          RowSpacing="8"
-          HorizontalAlignment="Stretch">
-
-          <!-- Id -->
-          <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" VerticalAlignment="Center" />
-          <TextBox   Grid.Row="0" Grid.Column="1" x:Name="IdBox" x:FieldModifier="public"
-                     IsReadOnly="True" MinWidth="160" HorizontalAlignment="Left" />
-
-          <!-- Название -->
-          <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" VerticalAlignment="Center" />
-          <TextBox   Grid.Row="1" Grid.Column="1" x:Name="NameBox" x:FieldModifier="public"
-                     HorizontalAlignment="Stretch" />
-
-          <!-- Описание -->
-          <TextBlock Grid.Row="2" Grid.Column="0" Text="Info:" VerticalAlignment="Top" />
-          <TextBox   Grid.Row="2" Grid.Column="1" x:Name="InfoBox" x:FieldModifier="public"
-                     AcceptsReturn="True" MinHeight="100" HorizontalAlignment="Stretch" />
-
-          <!-- Стоимость -->
-          <TextBlock Grid.Row="3" Grid.Column="0" Text="Cost:" VerticalAlignment="Center" />
-          <TextBox   Grid.Row="3" Grid.Column="1" x:Name="CostBox" x:FieldModifier="public"
-                     MinWidth="120" HorizontalAlignment="Left" />
-
-          <!-- Категория -->
-          <TextBlock Grid.Row="4" Grid.Column="0" Text="Category:" VerticalAlignment="Center" />
-          <ComboBox  Grid.Row="4" Grid.Column="1" x:Name="CategoryBox" x:FieldModifier="public"
-                     SelectedIndex="0" HorizontalAlignment="Stretch">
-            <ComboBoxItem Content="Electronics" />
-            <ComboBoxItem Content="Clothes" />
-            <ComboBoxItem Content="Food" />
-            <ComboBoxItem Content="Books" />
-            <ComboBoxItem Content="Sports" />
-            <ComboBoxItem Content="Beauty" />
-            <ComboBoxItem Content="Home" />
-            <ComboBoxItem Content="Toys" />
-          </ComboBox>
-
-          <!-- Сообщения об ошибках -->
-          <TextBlock Grid.Row="5" Grid.ColumnSpan="2" x:Name="ErrorText" x:FieldModifier="public"
-                     Foreground="Red" />
+            <!-- ВАЖНО: x:Name="ItemsList" -->
+            <ListBox x:Name="ItemsList"
+                     Grid.Row="1"/>
         </Grid>
 
-        <!-- Кнопка Save -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0">
-          <Button x:Name="SaveBtn" x:FieldModifier="public" Content="Save" />
-        </StackPanel>
+        <!-- Правая часть: форма редактирования -->
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-      </Grid>
-    </ScrollViewer>
-  </Grid>
+            <!-- Id -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Id:" Margin="0,0,5,5"/>
+            <TextBox   Grid.Row="0" Grid.Column="1" x:Name="IdBox" IsReadOnly="True" Margin="0,0,0,5"/>
+
+            <!-- Name -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Name:" Margin="0,0,5,5"/>
+            <TextBox   Grid.Row="1" Grid.Column="1" x:Name="NameBox" Margin="0,0,0,5"/>
+
+            <!-- Info -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Info:" Margin="0,0,5,5"/>
+            <TextBox   Grid.Row="2" Grid.Column="1" x:Name="InfoBox" Margin="0,0,0,5"
+                       AcceptsReturn="True" Height="60"/>
+
+            <!-- Cost -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Cost:" Margin="0,0,5,5"/>
+            <TextBox   Grid.Row="3" Grid.Column="1" x:Name="CostBox" Margin="0,0,0,5"/>
+
+            <!-- Category -->
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Category:" Margin="0,0,5,5"/>
+            <ComboBox  Grid.Row="4" Grid.Column="1" x:Name="CategoryBox" Margin="0,0,0,5"/>
+
+            <!-- Кнопки -->
+            <StackPanel Grid.Row="5" Grid.ColumnSpan="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Left"
+                        Margin="0,5,0,5">
+                <Button x:Name="AddBtn"    Content="Add"    Margin="0,0,5,0"/>
+                <Button x:Name="RemoveBtn" Content="Remove" Margin="0,0,5,0"/>
+                <Button x:Name="SaveBtn"   Content="Save"/>
+            </StackPanel>
+
+            <!-- Ошибки -->
+            <TextBlock Grid.Row="6" Grid.ColumnSpan="2"
+                       x:Name="ErrorText"
+                       Foreground="Red"
+                       TextWrapping="Wrap"/>
+        </Grid>
+    </Grid>
 </UserControl>

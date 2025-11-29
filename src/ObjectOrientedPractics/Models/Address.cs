@@ -1,10 +1,10 @@
 using System;
-
+using System.ComponentModel;
 using ObjectOrientedPractics.Services;
 
 namespace ObjectOrientedPractics.Model
 {
-    public class Address
+    public class Address : INotifyPropertyChanged
     {
         /// <summary>
         /// Почтовый индекс.
@@ -80,6 +80,7 @@ namespace ObjectOrientedPractics.Model
                     throw new ArgumentException("Почтовый индекс должен быть шестизначным числом.");
                 }
                 _index = value;
+                OnPropertyChanged(nameof(Index));
             }
         }
         /// <summary>
@@ -92,6 +93,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 50, nameof(Country));
                 _country = value ?? string.Empty;
+                OnPropertyChanged(nameof(Country));
             }
         }
         /// <summary>
@@ -104,6 +106,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 50, nameof(City));
                 _city = value ?? string.Empty;
+                OnPropertyChanged(nameof(City));
             }
         }
         /// <summary>
@@ -116,6 +119,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 100, nameof(Street));
                 _street = value ?? string.Empty;
+                OnPropertyChanged(nameof(Street));
             }
         }
         /// <summary>
@@ -128,6 +132,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 10, nameof(Building));
                 _building = value ?? string.Empty;
+                OnPropertyChanged(nameof(Building));
             }
         }
         /// <summary>
@@ -140,6 +145,7 @@ namespace ObjectOrientedPractics.Model
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 10, nameof(Apartment));
                 _apartment = value ?? string.Empty;
+                OnPropertyChanged(nameof(Apartment));
             }
         }
         /// <summary>
@@ -150,6 +156,10 @@ namespace ObjectOrientedPractics.Model
         {
             return $"{Index}, {Country}, {City}, {Street}, {Building}, {Apartment}";
         }
-        
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

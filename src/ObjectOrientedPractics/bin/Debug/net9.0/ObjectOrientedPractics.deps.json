@@ -9,6 +9,7 @@
       "ObjectOrientedPractics/1.0.0": {
         "dependencies": {
           "Avalonia": "11.3.6",
+          "Avalonia.Controls.DataGrid": "11.3.6",
           "Avalonia.Desktop": "11.3.6",
           "Avalonia.Diagnostics": "11.3.6",
           "Avalonia.Fonts.Inter": "11.3.6",
@@ -99,6 +100,17 @@
         },
         "runtime": {
           "lib/net8.0/Avalonia.Controls.ColorPicker.dll": {
+            "assemblyVersion": "11.3.6.0",
+            "fileVersion": "11.3.6.0"
+          }
+        }
+      },
+      "Avalonia.Controls.DataGrid/11.3.6": {
+        "dependencies": {
+          "Avalonia": "11.3.6"
+        },
+        "runtime": {
+          "lib/net8.0/Avalonia.Controls.DataGrid.dll": {
             "assemblyVersion": "11.3.6.0",
             "fileVersion": "11.3.6.0"
           }
@@ -480,6 +492,13 @@
       "sha512": "sha512-zgJFM7P7hOS9qcuSUqL2tjBFIsi03qiwAztYjtjtKjfBvLBOrVcmL5qHwjfjeLRLtjHprjMraAHtu3O2vi+51g==",
       "path": "avalonia.controls.colorpicker/11.3.6",
       "hashPath": "avalonia.controls.colorpicker.11.3.6.nupkg.sha512"
+    },
+    "Avalonia.Controls.DataGrid/11.3.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+zKAPaJOatN9o65v8fSAwZeDsBdIIBz+6lDfAwYaCUzlBw15aFGI57fGYyf4titVajjUi3ljhuzUgDTEo0mTww==",
+      "path": "avalonia.controls.datagrid/11.3.6",
+      "hashPath": "avalonia.controls.datagrid.11.3.6.nupkg.sha512"
     },
     "Avalonia.Desktop/11.3.6": {
       "type": "package",

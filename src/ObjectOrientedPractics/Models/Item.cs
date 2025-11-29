@@ -1,12 +1,13 @@
 using ObjectOrientedPractics.Services;
 using System;
+using System.ComponentModel;
 
 namespace ObjectOrientedPractics.Model
 {
     /// <summary>
     /// Представляет товар.
     /// </summary>
-    public class Item
+    public class Item : INotifyPropertyChanged
     {
         // ----- readonly-поля -----
         /// <summary>Уникальный идентификатор товара.</summary>
@@ -37,7 +38,9 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 200, nameof(Name));
+                if (_name == value) return;
                 _name = value ?? string.Empty;
+                OnPropertyChanged(nameof(Name));
             }
         }
 
@@ -48,7 +51,9 @@ namespace ObjectOrientedPractics.Model
             set
             {
                 ValueValidator.AssertStringOnLength(value ?? string.Empty, 1000, nameof(Info));
+                if (_info == value) return;
                 _info = value ?? string.Empty;
+                OnPropertyChanged(nameof(Info));
             }
         }
 
@@ -65,9 +70,15 @@ namespace ObjectOrientedPractics.Model
                         "Стоимость должна быть от 0 до 100000."
                     );
                 }
+                if (_cost == value) return;
                 _cost = value;
+                OnPropertyChanged(nameof(Cost));
             }
         }
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         // ----- конструктор -----
         /// <summary>

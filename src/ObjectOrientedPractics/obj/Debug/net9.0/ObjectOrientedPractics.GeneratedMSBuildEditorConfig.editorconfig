@@ -24,11 +24,23 @@ build_property.EnableCodeStyleSeverity =
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Controls/AddressControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Controls/OrderControl.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Tabs/CartsTab.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Tabs/CustomersTab.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Tabs/ItemsTab.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/alex/LAB/cs/OOP/src/ObjectOrientedPractics/View/Tabs/OrdersTab.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
